@@ -16,6 +16,11 @@ class FrontendController extends Controller
         return view('product-details');
     }
 
+    public function typeProducts ()
+    {
+        return view('type-products');
+    }
+
     public function shop ()
     {
         return view('shop');
@@ -44,11 +49,6 @@ class FrontendController extends Controller
     public function checkOut ()
     {
         return view('checkout');
-    }
-
-    public function typeProducts ()
-    {
-        return view('type-products');
     }
 
     public function privacyPolicy ()
