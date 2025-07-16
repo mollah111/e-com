@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Admin Dashboard</title>
   @include('backend.includes.header')
+
+  @stack('css')
 </head>
   
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -30,5 +32,6 @@
 </div>
 <!-- ./wrapper -->
 @include('backend.includes.script')
+@stack('script')
 </body>
 </html>
