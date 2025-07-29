@@ -44,7 +44,7 @@
                   <tr>
                     <td>{{$loop->index+1}}</td>
                     <td>{{$subcategory->name}}</td>
-                    <td>{{$subcategory->cat_id}}</td>
+                    <td>{{$subcategory->category->name}}</td>
                     <td>
                         <a href="#" class="btn btn-primary">Edit</a>
                         <a href="#" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a>
