@@ -51,3 +51,6 @@ Route::post('/admin/category/update/{id}', [CategoryController::class, 'category
 Route::get('/admin/sub-category/list', [SubCategoryController::class, 'subCategoryList']);
 Route::get('/admin/sub-category/create', [SubCategoryController::class, 'subCategoryCreate']);
 Route::post('/admin/sub-category/store', [SubCategoryController::class, 'subCategoryStore']);
+Route::get('/admin/sub-category/edit/{id}', [SubCategoryController::class, 'subCategoryEdit']);
+Route::post('/admin/sub-category/update/{id}', [SubCategoryController::class, 'subCategoryUpdate']);
+Route::get('/admin/sub-category/delete/{id}', [SubCategoryController::class, 'subCategoryDelete']);
