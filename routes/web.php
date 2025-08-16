@@ -60,3 +60,6 @@ Route::get('/admin/sub-category/delete/{id}', [SubCategoryController::class, 'su
 Route::get('/admin/product/list', [ProductController::class, 'productList']);
 Route::get('/admin/product/create', [ProductController::class, 'productCreate']);
 Route::post('/admin/product/store', [ProductController::class, 'productStore']);
+Route::get('/admin/product/edit/{id}', [ProductController::class, 'productEdit']);
+Route::post('/admin/product/update/{id}', [ProductController::class, 'productUpdate']);
+Route::get('/admin/product/delete/{id}', [ProductController::class, 'productDelete']);
