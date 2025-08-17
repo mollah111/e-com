@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
     public function index ()
     {
-        return view('index');
+       $hotProducts = Product::where('product_type', 'hot')->get();
+       $newProducts = Product::where('product_type', 'new')->get();
+       $regularProducts = Product::where('product_type', 'regular')->get();
+       $discountProducts = Product::where('product_type', 'discount')->get();
+        return view('index', compact('hotProducts', 'newProducts', 'regularProducts', 'discountProducts'));
     }
 
     public function productDetails ()
