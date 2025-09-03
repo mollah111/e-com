@@ -32,6 +32,7 @@ Route::get('/contact-us', [FrontendController::class, 'contactUs']);
 
 //Cart Routes...
 Route::get('/add-to-cart/{id}', [FrontendController::class, 'addToCart']);
+Route::post('/add-to-cart-details/{id}', [FrontendController::class, 'addToCartDetails']);
 
 //Admin Login...
 Route::get('/admin/login', [AdminController::class, 'adminLogin']);

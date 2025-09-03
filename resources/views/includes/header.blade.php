@@ -18,22 +18,23 @@
 						<div class="header-top-right-item-link">
 							<span class="icon-outer">
 								<i class="fas fa-cart-plus"></i>
-								<span class="count-number">1</span>
+								<span class="count-number">{{$cartCount}}</span>
 							</span>
 							Cart
 						</div>
 						<div class="cart-items-wrapper">
 							<div class="cart-items-outer">
-								<div class="cart-item-outer">
+								@foreach ($cartProducts as $cart)
+									<div class="cart-item-outer">
 									<a href="#" class="cart-product-image">
-										<img src="{{asset('/assets/images/product.png')}}" alt="product">
+										<img src="{{asset('backend/images/product/'.$cart->product->image)}}" alt="product">
 									</a>
 									<div class="cart-product-name-price">
 										<a href="#" class="product-name">
-											Test Product
+											{{$cart->product->name}}
 										</a>
 										<span class="product-price">
-											৳ 300
+											৳ {{$cart->price}}
 										</span>
 									</div>
 									<div class="cart-item-delete">
@@ -42,6 +43,7 @@
 										</a>
 									</div>
 								</div>
+								@endforeach
 							</div>
 							<div class="shopping-cart-footer">
 								<div class="shopping-cart-total">
