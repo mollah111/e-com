@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -89,6 +90,36 @@ class FrontendController extends Controller
     public function contactUs ()
     {
         return view('contact-us');
+    }
+
+    //Cart Function...
+    public function addToCart (Request $request, $id)
+    {
+        $cartProduct = Cart::where('product_id', $id)->where('ip_address', $request->ip())->orderBy('id', 'desc')->first();
+        $product = Product::find($id);
+
+        if($cartProduct == null){
+            $cart = new Cart();
+            $cart->ip_address = $request->ip();
+            $cart->product_id = $product->id;
+            $cart->qty = 1;
+
+        if($product->discount_price == null){
+            $cart->price = $product->regular_price;
+        }
+        elseif($product->discount_price != null){
+            $cart->price = $product->discount_price;
+        }
+
+            $cart->save();
+        }
+
+        elseif($cartProduct != null){
+            $cartProduct->qty = $cartProduct->qty + 1;
+            $cartProduct->save();
+        }
+
+        return redirect()->back();
     }
 
 

@@ -30,6 +30,9 @@ Route::get('/payment-policy', [FrontendController::class, 'paymentPolicy']);
 Route::get('/about-us', [FrontendController::class, 'aboutUs']);
 Route::get('/contact-us', [FrontendController::class, 'contactUs']);
 
+//Cart Routes...
+Route::get('/add-to-cart/{id}', [FrontendController::class, 'addToCart']);
+
 //Admin Login...
 Route::get('/admin/login', [AdminController::class, 'adminLogin']);
 
