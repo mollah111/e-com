@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -27,14 +28,18 @@ class FrontendController extends Controller
         return view('product-details', compact('product', 'categories'));
     }
 
-    public function typeProducts ()
+    public function typeProducts ($type)
     {
-        return view('type-products');
+        $products = Product::where('product_type', $type)->get();
+        $productsCount = Product::where('product_type', $type)->count();
+        return view('type-products', compact('products', 'type', 'productsCount'));
     }
 
     public function shop ()
     {
-        return view('shop');
+        $products = Product::orderBy('id', 'desc')->get();
+        $productsCount = Product::count();
+        return view('shop', compact('products', 'productsCount'));
     }
 
     public function returnProcess ()
@@ -42,14 +47,20 @@ class FrontendController extends Controller
        return view('return-process');     
     }
 
-    public function categoryProducts ()
+    public function categoryProducts ($id)
     {
-        return view('category-products');
+        $category = Category::find($id);
+        $products = Product::where('cat_id', $id)->get();
+        $productsCount = Product::where('cat_id', $id)->count();
+        return view('category-products', compact('products', 'category', 'productsCount'));
     }
     
-    public function subcategoryProducts ()
+    public function subcategoryProducts ($id)
     {
-        return view('subcategory-products');
+        $subCategory = SubCategory::find($id);
+        $products = Product::where('sub_cat_id', $id)->get();
+        $productsCount = Product::where('sub_cat_id', $id)->count();
+        return view('subcategory-products', compact('products', 'productsCount', 'subCategory'));
     }
 
     public function viewCart ()

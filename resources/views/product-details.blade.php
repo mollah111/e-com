@@ -163,7 +163,7 @@
                                     Category
                                 </h3>
                                @foreach ($categories as $category)
-                                    <a href="{{url('/category-products')}}" class="category-item-outer">
+                                    <a href="{{url('category-products/'.$category->id)}}" class="category-item-outer">
                                     <img src="{{asset('backend/images/category/'.$category->image)}}" alt="category image">
                                     {{$category->name}}
                                 </a>

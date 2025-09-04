@@ -14,11 +14,11 @@ Route::get('/', [FrontendController::class, 'index']);
 Route::get('/product-details/{slug}', [FrontendController::class, 'productDetails']);
 Route::get('/shop', [FrontendController::class, 'shop']);
 Route::get('/return-process', [FrontendController::class, 'returnProcess']);
-Route::get('/category-products', [FrontendController::class, 'categoryProducts']);
-Route::get('/subcategory-products', [FrontendController::class, 'subcategoryProducts']);
+Route::get('/category-products/{id}', [FrontendController::class, 'categoryProducts']);
+Route::get('/subcategory-products/{id}', [FrontendController::class, 'subcategoryProducts']);
 Route::get('/view-cart', [FrontendController::class, 'viewCart']);
 Route::get('/checkout', [FrontendController::class, 'checkOut']);
-Route::get('/type-products', [FrontendController::class, 'typeProducts']);
+Route::get('/type-products/{type}', [FrontendController::class, 'typeProducts']);
 
 
 // Policy page...
