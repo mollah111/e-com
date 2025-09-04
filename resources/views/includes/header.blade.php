@@ -24,7 +24,14 @@
 						</div>
 						<div class="cart-items-wrapper">
 							<div class="cart-items-outer">
+
+								@php
+									$totalCartPrice = 0;
+								@endphp
 								@foreach ($cartProducts as $cart)
+								@php
+									$totalCartPrice = $totalCartPrice+$cart->qty*$cart->price
+								@endphp
 									<div class="cart-item-outer">
 									<a href="#" class="cart-product-image">
 										<img src="{{asset('backend/images/product/'.$cart->product->image)}}" alt="product">
@@ -38,7 +45,7 @@
 										</span>
 									</div>
 									<div class="cart-item-delete">
-										<a href="#" class="delete-btn">
+										<a href="{{url('cart-delete/'.$cart->id)}}" class="delete-btn">
 											<i class="fas fa-trash-alt"></i>
 										</a>
 									</div>
@@ -48,7 +55,7 @@
 							<div class="shopping-cart-footer">
 								<div class="shopping-cart-total">
 									<h4>
-										Total <span>৳ 300</span>
+										Total <span>৳ {{$totalCartPrice}}</span>
 									</h4>
 								</div>
 								<div class="shopping-cart-button">
@@ -72,19 +79,23 @@
 							</div>
 							<div class="header__category-items-outer">
 								<ul class="header__category-list">
+									@foreach ($categoriesGlobal as $category)
 									<li class="header__category-list-item item-has-submenu">
 										<a href="{{url('/category-products')}}" class="header__category-list-item-link">
-											<img src="{{asset('/assets/images/product.png')}}" alt="category">
-											Test Category
+											<img src="{{asset('backend/images/category/'.$category->image)}}" alt="category">
+											{{$category->name}}
 										</a>
 										<ul class="header__nav-item-category-submenu">
-											<li class="header__category-submenu-item">
+											@foreach ($category->subCategory as $subCat)
+												<li class="header__category-submenu-item">
 												<a href="{{url('/subcategory-products')}}" class="header__category-submenu-item-link">
-													Test Subcategory
+													{{$subCat->name}}
 												</a>
 											</li>
+											@endforeach
 										</ul>
 									</li>
+									@endforeach
 								</ul>
 							</div>
 						</div>
