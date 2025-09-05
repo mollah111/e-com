@@ -35,6 +35,10 @@ Route::get('/add-to-cart/{id}', [FrontendController::class, 'addToCart']);
 Route::post('/add-to-cart-details/{id}', [FrontendController::class, 'addToCartDetails']);
 Route::get('/cart-delete/{id}', [FrontendController::class, 'addToCartDelete']);
 
+//Order Confirmation Routes...
+Route::post('/confirm-order', [FrontendController::class, 'confirmOrder']);
+Route::get('/order-confirmed/{invoiceId}', [FrontendController::class, 'thankYou']);
+
 //Admin Login...
 Route::get('/admin/login', [AdminController::class, 'adminLogin']);
 
