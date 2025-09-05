@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
@@ -177,6 +178,31 @@ class FrontendController extends Controller
         $cart = Cart::find($id);
         $cart->delete(); 
 
+        return redirect()->back();
+    }
+
+    //Confirm Order...
+
+    public function confirmOrder (Request $request)
+    {
+        $order = new Order();
+
+        $previousOrder = Order::orderBy('id', 'desc')->first();
+
+        if($previousOrder == null){
+            $order->invoiceId = "XYZ-1";
+        }
+        else{
+            $order->invoiceId = "XYZ-".$previousOrder->id+1;
+        }
+
+        $order->c_name = $request->c_name;
+        $order->c_phone = $request->c_phone;
+        $order->address = $request->address;
+        $order->area = $request->area;
+        $order->price = $request->grandTotalHidden;
+
+        $order->save();
         return redirect()->back();
     }
 }
