@@ -19,6 +19,7 @@ Route::get('/subcategory-products/{id}', [FrontendController::class, 'subcategor
 Route::get('/view-cart', [FrontendController::class, 'viewCart']);
 Route::get('/checkout', [FrontendController::class, 'checkOut']);
 Route::get('/type-products/{type}', [FrontendController::class, 'typeProducts']);
+Route::get('/search-products', [FrontendController::class, 'searchProducts']);
 
 
 // Policy page...

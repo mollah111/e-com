@@ -5,7 +5,8 @@
 					<img src="{{asset('/assets/images/logo.png')}}" alt="Logo">
 				</a>
 				<div class="search-form-outer">
-					<form action="" method="GET" class="form-group search-form">
+					<form action="{{url('/search-products')}}" method="GET" class="form-group search-form">
+						@csrf
 						<input type="text" name="search" class="form-control" placeholder="Search for items...">
 						<button type="submit"><i class="fas fa-search"></i></button>
 					</form>

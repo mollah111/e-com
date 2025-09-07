@@ -37,10 +37,21 @@ class FrontendController extends Controller
         return view('type-products', compact('products', 'type', 'productsCount'));
     }
 
-    public function shop ()
+    public function shop (Request $request) 
     {
-        $products = Product::orderBy('id', 'desc')->get();
-        $productsCount = Product::count();
+        if(isset($request->cat_id)){
+            $products = Product::orderBy('id', 'desc')->where('cat_id', $request->cat_id)->get();
+        }
+
+        elseif(isset($request->sub_cat_id)){
+            $products = Product::orderBy('id', 'desc')->where('sub_cat_id', $request->sub_cat_id)->get();
+        }
+
+        else{
+            $products = Product::orderBy('id', 'desc')->get();
+        }
+
+        $productsCount =  $products->count();
         return view('shop', compact('products', 'productsCount'));
     }
 
@@ -63,6 +74,13 @@ class FrontendController extends Controller
         $products = Product::where('sub_cat_id', $id)->get();
         $productsCount = Product::where('sub_cat_id', $id)->count();
         return view('subcategory-products', compact('products', 'productsCount', 'subCategory'));
+    }
+
+    public function searchProducts (Request $request)
+    {
+        $products = Product::where('name', 'LIKE', '%'.$request->search.'%')->get();
+        $productsCount = $products->count();
+        return view('search-products', compact('products', 'productsCount')); 
     }
 
     public function viewCart ()
@@ -236,3 +254,4 @@ class FrontendController extends Controller
         return view('thankyou', compact('invoiceId'));
     }    
 }
+ 
