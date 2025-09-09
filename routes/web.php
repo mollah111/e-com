@@ -77,3 +77,6 @@ Route::get('/admin/product/delete/{id}', [ProductController::class, 'productDele
 
 //Orders...
 Route::get('/admin/all-order/list', [OrderController::class, 'allOrderList']);
+Route::get('/admin/edit-order/{id}', [OrderController::class, 'editOrder']);
+Route::post('/admin/update-order/{id}', [OrderController::class, 'updateOrder']);
+Route::get('/admin/update-order-status/{status}/{id}', [OrderController::class, 'updateOrderStatus']);

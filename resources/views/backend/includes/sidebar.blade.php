@@ -127,6 +127,12 @@
                                   <p>Pending Orders</p>
                               </a>
                           </li>
+                           <li class="nav-item">
+                              <a href="#" class="nav-link">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>Confirmed Orders</p>
+                              </a>
+                          </li>
                           <li class="nav-item">
                               <a href="#" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
