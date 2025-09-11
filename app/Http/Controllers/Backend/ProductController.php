@@ -166,7 +166,7 @@ class ProductController extends Controller
                 unlink('backend/images/product/'.$product->image);
             }
             $imageName = rand().'-product-'.'.'.$request->image->extension();
-            $request->image->move('backend/images/product',$imageName);
+            $request->image->move('backend/images/product/',$imageName);
 
             $product->image = $imageName;
         }

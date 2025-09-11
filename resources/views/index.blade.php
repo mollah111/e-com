@@ -65,7 +65,7 @@
 					@foreach ($topBanners as $banner)
 						<div class="col-lg-4 col-md-6 col-sm-6">
 						<div class="banner-item-outer">
-							<img src="{{asset('backend/images/banners/'.$banner->banner_immage)}}" alt="banner image" />
+							<img src="{{asset('backend/images/setting/'.$banner->banner_image)}}" alt="banner image" />
 						</div>
 					</div>
 					@endforeach
