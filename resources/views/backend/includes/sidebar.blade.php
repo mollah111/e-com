@@ -168,6 +168,12 @@
                                   <p>Top Banners</p>
                               </a>
                           </li>
+                          <li class="nav-item">
+                              <a href="{{url('/admin/policies-process')}}" class="nav-link">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>Policies & Process</p>
+                              </a>
+                          </li>
                       </ul>
                   </li>
                   <li class="nav-item menu-open">

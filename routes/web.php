@@ -89,3 +89,5 @@ Route::post('/admin/general-setting/update', [SettingController::class, 'updateS
 Route::get('/admin/top-banners', [SettingController::class, 'showBanners']);
 Route::get('/admin/top-banner-edit/{id}', [SettingController::class, 'editBanner']);
 Route::post('/admin/top-banners/update/{id}', [SettingController::class, 'updateBanners']);
+Route::get('/admin/policies-process', [SettingController::class, 'showPolicyProcess']);
+Route::post('/admin/policies-process/update', [SettingController::class, 'updatePolicyProcess']);

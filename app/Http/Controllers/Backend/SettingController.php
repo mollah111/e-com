@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
+use App\Models\Policy;
 use App\Models\SiteSetting;
 use Illuminate\Http\Request;
 
@@ -79,5 +80,26 @@ class SettingController extends Controller
 
         $banner->save();
         return redirect('admin/top-banners');
+    }
+
+    public function showPolicyProcess ()
+    {
+        $policy = Policy::first();
+        return view('backend.settings.policy-process', compact('policy'));
+    }
+
+    public function updatePolicyProcess (Request $request)
+    {
+        $policy = Policy::first();
+
+        $policy->privacy_policy = $request->privacy_policy;
+        $policy->terms_conditions = $request->terms_conditions;
+        $policy->refund_policy = $request->refund_policy;
+        $policy->payment_policy = $request->payment_policy;
+        $policy->about_us = $request->about_us;
+        $policy->return_process = $request->return_process;
+
+        $policy->save();
+        return redirect()->back();
     }
 }
